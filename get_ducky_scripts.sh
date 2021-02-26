@@ -30,7 +30,6 @@ for i in "${payloads_array[@]}"
 do
 	((CNT=CNT+1))
 	B64OUTPUT=$(curl -s $URL"/"$i | grep $B64INIT | awk -F $B64INIT {'print $2'} | cut -d '"' -f1)
-	# REMOVE 'pl' FROM PATH !!!
 	echo "$B64OUTPUT" | base64 -d > "$SAVEDIR/$SAVESUBDIR/payload$CNT.txt"
 	clear
 	echo "$CNT of $TOTCNT payloads processed..." 
