@@ -20,11 +20,7 @@ mkdir -p "$SAVEDIR/$SAVESUBDIR"
 all_the_payloads=$(curl -s $URL | grep $WHAT_TO_LOOK_FOR | awk -F $WHAT_TO_LOOK_FOR\" {'print $2'} | cut -d '"' -f1)
 payloads_array=($(echo $all_the_payloads | tr " " "\n"))
 
-for i in "${payloads_array[@]}"
-do
-	((TOTCNT=TOTCNT+1))
-done
-
+TOTCNT=${#payloads_array[@]}
 
 for i in "${payloads_array[@]}"
 do
